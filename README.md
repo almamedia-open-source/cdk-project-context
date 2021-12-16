@@ -2,9 +2,9 @@
 
 ![CDK Version](https://img.shields.io/badge/CDK-v2-informational "CDK v2")
 
-Resolve AWS project configuration from CDK (`cdk.json` & runtime) context.
+Opinionated CDK utility **construct for managing project information & AWS account-specific configuration**.
 
-This is an opinionated utility tool that enforces a specific configuration model for AWS CDK projects. When used, a developer can be quaranteed the information is available and in correct format – or otherwise `cdk synth|diff|deploy` will fail.
+When used, a developer can be quaranteed the information is available and in correct format – or otherwise `cdk synth|diff|deploy` will fail.
 
 Why you'd use this? Especially if you develop microservices, you end up with a lot of CDK projects. Without well-defined method of managing project configuration one often ends up reinventing the wheel in each project.
 

@@ -78,7 +78,7 @@ npm i -D @almamedia-open-source/cdk-project-context
     ```
 
 
-3. Run CDK commands with `account` CLI context flag:
+3. Run CDK commands with `account` CLI context flag to **_select_ the desired account configuration**:
     ```shell
     npx cdk deploy --context account=dev
     ```

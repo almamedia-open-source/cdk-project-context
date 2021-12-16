@@ -18,68 +18,79 @@ npm i -D @almamedia-open-source/cdk-project-context
 
 ## Usage
 
-1. Define your `cdk.json` with following context:
-    ```jsonc
-    {
-      "context": {
-        "project": {
-          "name": "My Cool Project",
-          "author": {
-            "organization": "Acme",
-            "name": "Mad Scientists",
-            "email": "mad.scientists@acme.example.com" // Optional
+1. In your CDK application (for example `lib/app.ts`) use `Project` instead of `App` to initialize the CDK app:
+    ```ts
+    import { Project } from '@almamedia-open-source/cdk-project-context';
+
+    // new Project instead of new App
+    const project = new Project({
+      name: 'my-cool-project',
+      author: {
+        organization: 'Acme Corp',
+        name: 'Mad Scientists',
+        email: 'mad.scientists@acme.example.com',
+      },
+      defaultRegion: 'eu-west-1', // defaults to one of: $CDK_DEFAULT_REGION, $AWS_REGION or us-east-1
+      accounts: {
+        dev: {
+          id: '111111111111',
+          config: {
+            baseDomain: 'example.net',
           },
-          "region": "eu-west-1", // Optional
-          "accounts": {
-            // account key can be anything you want... dev/prod just as an example here
-            "dev": {
-              "id": "123456789012",
+        },
+        prod: {
+          id: '222222222222',
+          config: {
+            baseDomain: 'example.com',
+          },
+        },
+      },
+    })
+    ```
 
-              // Any additional/optional configuration...
-              "hello": "foo",
-              "nested": {
-                "thing": false,
-              }
-            },
-            "prod": {
-              "id": "210987654321",
+2. Some where in your stacks you may use:
+    ```ts
+    import { Stack, StackProps, CfnOutput } from 'aws-cdk-lib';
+    import { ProjectContext } from '@almamedia-open-source/cdk-project-context';
 
-              // Any additional/optional configuration...
-              "hello": "bar",
-              "nested": {
-                "thing": true,
-              }
-            }
-          }
-        }
+    export class MyStack extends Stack {
+      constructor(scope: Construct, id: string, props?: StackProps) {
+        super(scope, id, props);
+
+        // Get the default region for this project
+        new CfnOutput(this, 'DefaultRegion', { value: ProjectContext.getDefaultRegion(this) });
+
+        // Get the project name
+        new CfnOutput(this, 'Name', { value: ProjectContext.getName(this) });
+
+        // Get information about the project author
+        new CfnOutput(this, 'AuthorOrganization', { value: ProjectContext.getAuthorOrganization(this) });
+        new CfnOutput(this, 'AuthorName', { value: ProjectContext.getAuthorName(this) });
+        new CfnOutput(this, 'AuthorEmail', { value: ProjectContext.getAuthorEmail(this) });
+
+        // Get AWS account specific configuration
+        new CfnOutput(this, 'AccountType', { value: ProjectContext.getAccountType(this) });
+        new CfnOutput(this, 'AccountId', { value: ProjectContext.getAccountId(this) });
+        new CfnOutput(this, 'AccountBaseDomain', { value: ProjectContext.getAccountConfig(this, 'baseDomain') });
+
       }
     }
     ```
 
-2. Use provided utility classes:
-    ```ts
-    import { ProjectContext } from '@almamedia-open-source/cdk-project-context';
 
-    const project = new ProjectContext(scope);
-
-    // available utilities
-    project.name;
-    project.author.organization;
-    project.author.name;
-    project.author.email;
-    project.region;
-    project.accountId;
-    project.accountConfig('hello');
-    project.accountConfig('nested.thing');
-    project.environment;
-    ```
-
-3. Run CDK commands with `account` and optionally with `environment` CLI context flags:
+3. Run CDK commands with `account` and optionally with `environment` CLI context flag:
     ```shell
-    npx cdk diff --context account=dev --context environment=staging
+    npx cdk diff --context account=dev
     ```
 
-    ... or use a shorthand syntax:
-    ```shell
-    npx cdk diff -c account=dev -c env=staging
-    ```
+4. You'll get the following CloudFormation outputs:
+    |        Name        |               Value               |
+    | :----------------- | :-------------------------------- |
+    | DefaultRegion      | `eu-west-1`                       |
+    | Name               | `my-cool-project`                 |
+    | AuthorOrganization | `Acme Corp`                       |
+    | AuthorName         | `Mad Scientists`                  |
+    | AuthorEmail        | `mad.scientists@acme.example.com` |
+    | AccountType        | `dev`                             |
+    | AccountId          | `111111111111`                    |
+    | AccountBaseDomain  | `example.net`                     |

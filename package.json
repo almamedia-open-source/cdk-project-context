@@ -29,16 +29,14 @@
     "projen": "npx projen"
   },
   "author": {
-    "name": "Ari Palo",
-    "email": "ari.palo@almamedia.fi",
-    "organization": false
+    "name": "Alma Media",
+    "email": "opensource@almamedia.dev",
+    "organization": true
   },
   "devDependencies": {
     "@aws-cdk/assert": "^2.0.0",
-    "@types/change-case": "^2.3.1",
     "@types/jest": "*",
     "@types/node": "^14.17.0",
-    "@types/tv4": "^1.2.31",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "aws-cdk-lib": "^2.0.0",
@@ -64,14 +62,7 @@
     "aws-cdk-lib": "^2.0.0",
     "constructs": "^10.0.0"
   },
-  "dependencies": {
-    "change-case": "^4.1.2",
-    "tv4": "^1.3.0"
-  },
-  "bundledDependencies": [
-    "change-case",
-    "tv4"
-  ],
+  "bundledDependencies": [],
   "keywords": [
     "cdk"
   ],

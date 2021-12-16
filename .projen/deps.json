@@ -6,20 +6,12 @@
       "type": "build"
     },
     {
-      "name": "@types/change-case",
-      "type": "build"
-    },
-    {
       "name": "@types/jest",
       "type": "build"
     },
     {
       "name": "@types/node",
       "version": "^14.17.0",
-      "type": "build"
-    },
-    {
-      "name": "@types/tv4",
       "type": "build"
     },
     {
@@ -108,14 +100,6 @@
     {
       "name": "typescript",
       "type": "build"
-    },
-    {
-      "name": "change-case",
-      "type": "bundled"
-    },
-    {
-      "name": "tv4",
-      "type": "bundled"
     },
     {
       "name": "aws-cdk-lib",

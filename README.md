@@ -78,7 +78,7 @@ npm i -D @almamedia-open-source/cdk-project-context
     ```
 
 
-3. Run CDK commands with `account` and optionally with `environment` CLI context flag:
+3. Run CDK commands with `account` CLI context flag:
     ```shell
     npx cdk diff --context account=dev
     ```

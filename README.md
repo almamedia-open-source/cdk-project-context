@@ -18,61 +18,32 @@ npm i -D @almamedia-open-source/cdk-project-context
 
 ## Usage
 
-1. Define your `cdk.json` with following context:
-    ```jsonc
-    {
-      "context": {
-        "project": {
-          "name": "My Cool Project",
-          "author": {
-            "organization": "Acme",
-            "name": "Mad Scientists",
-            "email": "mad.scientists@acme.example.com" // Optional
-          },
-          "region": "eu-west-1", // Optional
-          "accounts": {
-            // account key can be anything you want... dev/prod just as an example here
-            "dev": {
-              "id": "123456789012",
+```ts
+// new Project instead of new App
+const project = new Project({
+  name: 'foo',
+  author: {
+    organization: 'Acme Corp',
+    name: 'Mad Scientists',
+    email: 'mad.scientists@acme.example.com',
+  },
+  accounts: {
+    dev: {
+      id: '111111111111',
+      config: {
+        baseDomain: 'example.net',
+      },
+    },
+    prod: {
+      id: '222222222222',
+      config: {
+        baseDomain: 'example.com',
+      },
+    },
+  },
+})
+```
 
-              // Any additional/optional configuration...
-              "hello": "foo",
-              "nested": {
-                "thing": false,
-              }
-            },
-            "prod": {
-              "id": "210987654321",
-
-              // Any additional/optional configuration...
-              "hello": "bar",
-              "nested": {
-                "thing": true,
-              }
-            }
-          }
-        }
-      }
-    }
-    ```
-
-2. Use provided utility classes:
-    ```ts
-    import { ProjectContext } from '@almamedia-open-source/cdk-project-context';
-
-    const project = new ProjectContext(scope);
-
-    // available utilities
-    project.name;
-    project.author.organization;
-    project.author.name;
-    project.author.email;
-    project.region;
-    project.accountId;
-    project.accountConfig('hello');
-    project.accountConfig('nested.thing');
-    project.environment; // can be undefined
-    ```
 
 3. Run CDK commands with `account` and optionally with `environment` CLI context flags:
     ```shell

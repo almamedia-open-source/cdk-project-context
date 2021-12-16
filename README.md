@@ -80,7 +80,7 @@ npm i -D @almamedia-open-source/cdk-project-context
 
 3. Run CDK commands with `account` CLI context flag:
     ```shell
-    npx cdk diff --context account=dev
+    npx cdk deploy --context account=dev
     ```
 
 4. You'll get the following CloudFormation outputs:

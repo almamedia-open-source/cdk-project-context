@@ -71,7 +71,7 @@ npm i -D @almamedia-open-source/cdk-project-context
     project.accountId;
     project.accountConfig('hello');
     project.accountConfig('nested.thing');
-    project.environment;
+    project.environment; // can be undefined
     ```
 
 3. Run CDK commands with `account` and optionally with `environment` CLI context flags:

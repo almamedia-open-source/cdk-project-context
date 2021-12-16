@@ -32,7 +32,7 @@ export class EnvironmentContext implements IEnvironment {
   private assertIsEnvironment(value: any): asserts value is string {
     if (typeof value !== 'string') {
       throw new AssertionError({
-        message: 'Environment name not string',
+        message: 'Environment name not specified or not string. Provide environment with --context environment=name CLI argument.',
         actual: typeof value,
         expected: 'string',
       });

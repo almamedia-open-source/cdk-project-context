@@ -48,7 +48,7 @@ npm i -D @almamedia-open-source/cdk-project-context
     })
     ```
 
-2. Some where in your stacks you may use:
+2. Some where in your stacks you may use static methods of `ProjectContext` class:
     ```ts
     import { Stack, StackProps, CfnOutput } from 'aws-cdk-lib';
     import { ProjectContext } from '@almamedia-open-source/cdk-project-context';

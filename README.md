@@ -77,6 +77,8 @@ npm i -D @almamedia-open-source/cdk-project-context
     }
     ```
 
+    There's also a shorthand alias `PC` available, for example: `PC.getAccountId(this)`.
+
 
 3. Run CDK commands with `account` CLI context flag to **_select_ the desired account configuration**:
     ```shell

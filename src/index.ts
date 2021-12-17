@@ -1,4 +1,4 @@
 export * from './interfaces';
 export { Project } from './project';
-export { ProjectContext } from './project-context';
+export { ProjectContext, ProjectContext as PC } from './project-context';
 

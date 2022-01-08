@@ -15,7 +15,7 @@ Note: This is not a replacement for tools such as AWS AppConfig, Parameter Store
 
 ## Important
 
-**This tool is work-in-progress and experimental**: Breaking changes may occur before first `v1` major is released!
+🚧 **This tool is work-in-progress and experimental**: Breaking changes may occur before first `v1` major is released!
 
 ## Installation
 

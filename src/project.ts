@@ -5,24 +5,57 @@ import { resolveDefaultRegion } from './resolve-region';
 
 export interface ProjectProps extends ProjectConfiguration, AppProps {}
 
+/** High-level wrapper for `cdk.App` with specific requirements for props.
+ *
+ * Use it like you would `cdk.App` and assign stacks into it.
+ *
+ * @example
+ * // new Project instead of new App
+ * const project = new Project({
+ *   name: 'my-cool-project',
+ *   author: {
+ *     organization: 'Acme Corp',
+ *     name: 'Mad Scientists',
+ *     email: 'mad.scientists@acme.example.com',
+ *   },
+ *   defaultRegion: 'eu-west-1', // defaults to one of: $CDK_DEFAULT_REGION, $AWS_REGION or us-east-1
+ *   accounts: {
+ *     dev: {
+ *       id: '111111111111',
+ *       config: {
+ *         baseDomain: 'example.net',
+ *       },
+ *     },
+ *     prod: {
+ *       id: '222222222222',
+ *       config: {
+ *         baseDomain: 'example.com',
+ *       },
+ *     },
+ *   },
+ * })
+ */
 export class Project extends App {
 
-  static CONTEXT_SCOPE = '@almamedia-open-source/cdk-project-context@v1';
+  /** Namespace/key how this tool internally keeps track of the project configuration */
+  public static CONTEXT_SCOPE = '@almamedia-open-source/cdk-project-context@v1';
 
+  /** Initializes a new Project (which can be used in place of cdk.App) */
   constructor(props: ProjectProps) {
 
-    const projectContext: ProjectConfiguration = {
+    // Define the project configuration set into App context
+    const config: ProjectConfiguration = {
       name: props.name,
       author: props.author,
       accounts: props.accounts,
       defaultRegion: resolveDefaultRegion(props.defaultRegion),
     };
 
-    super({
-      ...props,
-      context: {
-        ...props.context,
-        [Project.CONTEXT_SCOPE]: projectContext,
+    super({                 // initialize the cdk.App
+      ...props,             // and pass in the given props
+      context: {            // but overwrite context
+        ...props.context,   // while still passing the context given in props
+        [Project.CONTEXT_SCOPE]: config,  // and inject project context
       },
     });
   }

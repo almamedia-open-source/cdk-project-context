@@ -7,7 +7,7 @@ const project = new AwsCdkConstructLibrary({
   defaultReleaseBranch: 'main',
   name: '@almamedia-open-source/cdk-project-context',
   repositoryUrl: 'https://github.com/almamedia-open-source/cdk-project-context.git',
-  minNodeVersion: '14.15.0',
+  minNodeVersion: '14.17.6',
   constructsVersion: '10.0.0',
 
   peerDeps: ['constructs', 'aws-cdk-lib'],

@@ -1,5 +1,5 @@
 import { resolveDefaultRegion } from '../src/resolve-region';
-import { resetRegionEnvironmentalVariables } from './reset-region';
+import { resetRegionEnvironmentalVariables } from './utils/reset-region';
 
 describe('Default region selection', () => {
 

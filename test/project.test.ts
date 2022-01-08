@@ -1,7 +1,7 @@
 //import { App, AppProps, Annotations } from 'aws-cdk-lib';
 //import { Construct } from 'constructs';
 import { Project } from '../src/project';
-import { resetRegionEnvironmentalVariables } from './reset-region';
+import { resetRegionEnvironmentalVariables } from './utils/reset-region';
 
 const config = {
   name: 'foo',

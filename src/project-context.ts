@@ -9,8 +9,7 @@ export class ProjectContext {
   static getAccountType(scope: Construct): string {
     const type = (
       scope.node.tryGetContext('account-type') ||
-      scope.node.tryGetContext('account') ||
-      scope.node.tryGetContext('a')
+      scope.node.tryGetContext('account')
     );
 
     if (typeof type !== 'string') {

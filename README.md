@@ -92,7 +92,7 @@ Note: This is not a replacement for tools such as AWS AppConfig, Parameter Store
     There's also a shorthand alias `PC` available, for example: `PC.getAccountId(this)`.
 
 
-3. Run CDK commands with `account` CLI context flag to **_select_ the desired account configuration**:
+3. Run CDK commands with `account-type` (or shorthand: `account`) CLI context flag to **_select_ the desired account configuration**:
     ```shell
     npx cdk deploy --context account=dev
     ```

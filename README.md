@@ -13,6 +13,10 @@ Why you'd use this?
 
 Note: This is not a replacement for tools such as AWS AppConfig, Parameter Store or Secrets Manager! Project Context should only contain non-secret values that define "where to deploy" and certain values that you may wish to use for example as part of tagging or naming resources.
 
+## Important
+
+**This tool is work-in-progress and experimental**: Breaking changes may occur before first `v1` major is released!
+
 ## Installation
 
 1. Ensure you meet following requirements:

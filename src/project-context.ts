@@ -55,19 +55,25 @@ export class ProjectContext {
     return projectContext.author.email;
   }
 
-  static getEnvironment(scope: Construct): string {
+  static tryGetEnvironment(scope: Construct): string | undefined {
     const environment = (
       scope.node.tryGetContext('environment-type') ||
       scope.node.tryGetContext('environment') ||
       scope.node.tryGetContext('env')
     );
 
+    return environment;
+  }
+
+  static getEnvironment(scope: Construct): string {
+    const environment = ProjectContext.tryGetEnvironment(scope);
+
     if (typeof environment !== 'string') {
       // TODO decide if add annotation or throw?
       Annotations.of(scope).addError('Environment Type not specified! Provide environment type as context argument for CDK CLI, for example: --context environment-type=staging');
     }
 
-    return environment;
+    return <string>environment;
   }
 
   private static getProjectContext(scope: Construct): ProjectConfiguration {

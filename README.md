@@ -86,7 +86,7 @@ npm i -D @almamedia-open-source/cdk-project-context
     ```
 
 4. You'll get the following CloudFormation outputs:
-    |        Name        |               Value               |
+    |        Name        |           Example Value           |
     | :----------------- | :-------------------------------- |
     | DefaultRegion      | `eu-west-1`                       |
     | Name               | `my-cool-project`                 |

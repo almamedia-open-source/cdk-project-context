@@ -3,6 +3,7 @@ const { AwsCdkConstructLibrary, TextFile } = require('projen');
 const nodejsVersion = '14.17.6';
 
 const project = new AwsCdkConstructLibrary({
+  stability: 'experimental',
   authorName: 'Alma Media',
   authorOrganization: true,
   authorAddress: 'opensource@almamedia.dev',

@@ -1,6 +1,7 @@
 # AWS CDK Project Context
 
 ![CDK Version](https://img.shields.io/badge/CDK-v2-informational "CDK v2")
+![Stability](https://img.shields.io/badge/Stability-Experimental-yellow "Stability: Experimental")
 
 Opinionated CDK utility **construct for managing project information & AWS account-specific configuration**.
 

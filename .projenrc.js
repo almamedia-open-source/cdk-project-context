@@ -1,4 +1,4 @@
-const { AwsCdkConstructLibrary, TextFile } = require('projen');
+const { AwsCdkConstructLibrary, TextFile, NpmAccess } = require('projen');
 
 const nodejsVersion = '14.17.6';
 
@@ -13,8 +13,9 @@ const project = new AwsCdkConstructLibrary({
   repositoryUrl: 'https://github.com/almamedia-open-source/cdk-project-context.git',
   keywords: ['cdk', 'aws-cdk', 'awscdk', 'aws'],
 
-  // CI/CD
+  // Publish configuration
   defaultReleaseBranch: 'main',
+  npmAccess: NpmAccess.PUBLIC,
 
   // Dependencies
   minNodeVersion: nodejsVersion,

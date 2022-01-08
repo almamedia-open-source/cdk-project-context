@@ -56,6 +56,14 @@ export class ProjectContext {
     return projectContext.author.email;
   }
 
+  static getEnvironment(scope: Construct): string | undefined {
+    return (
+      scope.node.tryGetContext('environment-type') ||
+      scope.node.tryGetContext('environment') ||
+      scope.node.tryGetContext('env')
+    );
+  }
+
   private static getProjectContext(scope: Construct): ProjectConfiguration {
     const projectContext = <ProjectConfiguration>scope.node.tryGetContext(Project.CONTEXT_SCOPE);
     return projectContext;

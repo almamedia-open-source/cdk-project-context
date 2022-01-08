@@ -4,6 +4,10 @@
 
 ### Project <a name="@almamedia-open-source/cdk-project-context.Project" id="almamediaopensourcecdkprojectcontextproject"></a>
 
+High-level wrapper for `cdk.App` with specific requirements for props.
+
+Use it like you would `cdk.App` and assign stacks into it.
+
 #### Initializers <a name="@almamedia-open-source/cdk-project-context.Project.Initializer" id="almamediaopensourcecdkprojectcontextprojectinitializer"></a>
 
 ```typescript
@@ -26,28 +30,28 @@ new Project(props: ProjectProps)
 
 
 
-#### Properties <a name="Properties" id="properties"></a>
+
+#### Constants <a name="Constants" id="constants"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`foo`](#almamediaopensourcecdkprojectcontextprojectpropertyfoo)<span title="Required">*</span> | `string` | *No description.* |
+| [`CONTEXT_SCOPE`](#almamediaopensourcecdkprojectcontextprojectpropertycontextscope)<span title="Required">*</span> | `string` | Namespace/key how this tool internally keeps track of the project configuration. |
 
 ---
 
-##### `foo`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.Project.property.foo" id="almamediaopensourcecdkprojectcontextprojectpropertyfoo"></a>
-
-```typescript
-public readonly foo: string;
-```
+##### `CONTEXT_SCOPE` <a name="@almamedia-open-source/cdk-project-context.Project.property.CONTEXT_SCOPE" id="almamediaopensourcecdkprojectcontextprojectpropertycontextscope"></a>
 
 - *Type:* `string`
 
----
+Namespace/key how this tool internally keeps track of the project configuration.
 
+---
 
 ## Structs <a name="Structs" id="structs"></a>
 
 ### Account <a name="@almamedia-open-source/cdk-project-context.Account" id="almamediaopensourcecdkprojectcontextaccount"></a>
+
+AWS account configuration.
 
 #### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
 
@@ -61,8 +65,8 @@ const account: Account = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`id`](#almamediaopensourcecdkprojectcontextaccountpropertyid)<span title="Required">*</span> | `string` | *No description.* |
-| [`config`](#almamediaopensourcecdkprojectcontextaccountpropertyconfig) | {[ key: string ]: `any`} | *No description.* |
+| [`id`](#almamediaopensourcecdkprojectcontextaccountpropertyid)<span title="Required">*</span> | `string` | AWS Account ID. |
+| [`config`](#almamediaopensourcecdkprojectcontextaccountpropertyconfig) | {[ key: string ]: `any`} | AWS account specific configuration. |
 
 ---
 
@@ -74,6 +78,8 @@ public readonly id: string;
 
 - *Type:* `string`
 
+AWS Account ID.
+
 ---
 
 ##### `config`<sup>Optional</sup> <a name="@almamedia-open-source/cdk-project-context.Account.property.config" id="almamediaopensourcecdkprojectcontextaccountpropertyconfig"></a>
@@ -84,9 +90,17 @@ public readonly config: {[ key: string ]: any};
 
 - *Type:* {[ key: string ]: `any`}
 
+AWS account specific configuration.
+
+For example VPC IDs (for existing VPCs), Direct Connect Gateway IDs, apex domain names (for Route53 Zone lookups), etc. Basically configuration for resources that are defined outside of this CDK application.
+
 ---
 
 ### Author <a name="@almamedia-open-source/cdk-project-context.Author" id="almamediaopensourcecdkprojectcontextauthor"></a>
+
+Author information.
+
+I.e. who owns/develops this project/service.
 
 #### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
 
@@ -100,19 +114,21 @@ const author: Author = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`organization`](#almamediaopensourcecdkprojectcontextauthorpropertyorganization)<span title="Required">*</span> | `string` | *No description.* |
-| [`email`](#almamediaopensourcecdkprojectcontextauthorpropertyemail) | `string` | *No description.* |
-| [`name`](#almamediaopensourcecdkprojectcontextauthorpropertyname) | `string` | *No description.* |
+| [`name`](#almamediaopensourcecdkprojectcontextauthorpropertyname)<span title="Required">*</span> | `string` | Human-readable name for the team/contact responsible for this project/service. |
+| [`email`](#almamediaopensourcecdkprojectcontextauthorpropertyemail) | `string` | Email address for the team/contact responsible for this project/service. |
+| [`organization`](#almamediaopensourcecdkprojectcontextauthorpropertyorganization) | `string` | Human-readable name for the organization responsible for this project/service. |
 
 ---
 
-##### `organization`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.Author.property.organization" id="almamediaopensourcecdkprojectcontextauthorpropertyorganization"></a>
+##### `name`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.Author.property.name" id="almamediaopensourcecdkprojectcontextauthorpropertyname"></a>
 
 ```typescript
-public readonly organization: string;
+public readonly name: string;
 ```
 
 - *Type:* `string`
+
+Human-readable name for the team/contact responsible for this project/service.
 
 ---
 
@@ -124,15 +140,19 @@ public readonly email: string;
 
 - *Type:* `string`
 
+Email address for the team/contact responsible for this project/service.
+
 ---
 
-##### `name`<sup>Optional</sup> <a name="@almamedia-open-source/cdk-project-context.Author.property.name" id="almamediaopensourcecdkprojectcontextauthorpropertyname"></a>
+##### `organization`<sup>Optional</sup> <a name="@almamedia-open-source/cdk-project-context.Author.property.organization" id="almamediaopensourcecdkprojectcontextauthorpropertyorganization"></a>
 
 ```typescript
-public readonly name: string;
+public readonly organization: string;
 ```
 
 - *Type:* `string`
+
+Human-readable name for the organization responsible for this project/service.
 
 ---
 
@@ -150,9 +170,9 @@ const projectConfiguration: ProjectConfiguration = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`accounts`](#almamediaopensourcecdkprojectcontextprojectconfigurationpropertyaccounts)<span title="Required">*</span> | {[ key: string ]: [`@almamedia-open-source/cdk-project-context.Account`](#@almamedia-open-source/cdk-project-context.Account)} | *No description.* |
-| [`author`](#almamediaopensourcecdkprojectcontextprojectconfigurationpropertyauthor)<span title="Required">*</span> | [`@almamedia-open-source/cdk-project-context.Author`](#@almamedia-open-source/cdk-project-context.Author) | *No description.* |
-| [`name`](#almamediaopensourcecdkprojectcontextprojectconfigurationpropertyname)<span title="Required">*</span> | `string` | *No description.* |
+| [`accounts`](#almamediaopensourcecdkprojectcontextprojectconfigurationpropertyaccounts)<span title="Required">*</span> | {[ key: string ]: [`@almamedia-open-source/cdk-project-context.Account`](#@almamedia-open-source/cdk-project-context.Account)} | Dictionary of AWS account specific configuration. |
+| [`author`](#almamediaopensourcecdkprojectcontextprojectconfigurationpropertyauthor)<span title="Required">*</span> | [`@almamedia-open-source/cdk-project-context.Author`](#@almamedia-open-source/cdk-project-context.Author) | Author information. |
+| [`name`](#almamediaopensourcecdkprojectcontextprojectconfigurationpropertyname)<span title="Required">*</span> | `string` | Name of your project/service. |
 | [`defaultRegion`](#almamediaopensourcecdkprojectcontextprojectconfigurationpropertydefaultregion) | `string` | Specify default region you wish to use. |
 
 ---
@@ -165,6 +185,10 @@ public readonly accounts: {[ key: string ]: Account};
 
 - *Type:* {[ key: string ]: [`@almamedia-open-source/cdk-project-context.Account`](#@almamedia-open-source/cdk-project-context.Account)}
 
+Dictionary of AWS account specific configuration.
+
+The key value can be anything (such as AWS Account alias), but it's recommended to keep it short such as `dev` or `prod`.
+
 ---
 
 ##### `author`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectConfiguration.property.author" id="almamediaopensourcecdkprojectcontextprojectconfigurationpropertyauthor"></a>
@@ -175,6 +199,10 @@ public readonly author: Author;
 
 - *Type:* [`@almamedia-open-source/cdk-project-context.Author`](#@almamedia-open-source/cdk-project-context.Author)
 
+Author information.
+
+I.e. who owns/develops this project/service.
+
 ---
 
 ##### `name`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectConfiguration.property.name" id="almamediaopensourcecdkprojectcontextprojectconfigurationpropertyname"></a>
@@ -184,6 +212,10 @@ public readonly name: string;
 ```
 
 - *Type:* `string`
+
+Name of your project/service.
+
+Prefer `hyphen-case`.
 
 ---
 
@@ -203,6 +235,10 @@ If left empty will default to one of the following in order: 1. `$CDK_DEFAULT_RE
 
 ### ProjectProps <a name="@almamedia-open-source/cdk-project-context.ProjectProps" id="almamediaopensourcecdkprojectcontextprojectprops"></a>
 
+Props given to `Project`.
+
+I.e. custom props for this construct and the usual props given to `cdk.App`.
+
 #### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
 
 ```typescript
@@ -215,9 +251,9 @@ const projectProps: ProjectProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`accounts`](#almamediaopensourcecdkprojectcontextprojectpropspropertyaccounts)<span title="Required">*</span> | {[ key: string ]: [`@almamedia-open-source/cdk-project-context.Account`](#@almamedia-open-source/cdk-project-context.Account)} | *No description.* |
-| [`author`](#almamediaopensourcecdkprojectcontextprojectpropspropertyauthor)<span title="Required">*</span> | [`@almamedia-open-source/cdk-project-context.Author`](#@almamedia-open-source/cdk-project-context.Author) | *No description.* |
-| [`name`](#almamediaopensourcecdkprojectcontextprojectpropspropertyname)<span title="Required">*</span> | `string` | *No description.* |
+| [`accounts`](#almamediaopensourcecdkprojectcontextprojectpropspropertyaccounts)<span title="Required">*</span> | {[ key: string ]: [`@almamedia-open-source/cdk-project-context.Account`](#@almamedia-open-source/cdk-project-context.Account)} | Dictionary of AWS account specific configuration. |
+| [`author`](#almamediaopensourcecdkprojectcontextprojectpropspropertyauthor)<span title="Required">*</span> | [`@almamedia-open-source/cdk-project-context.Author`](#@almamedia-open-source/cdk-project-context.Author) | Author information. |
+| [`name`](#almamediaopensourcecdkprojectcontextprojectpropspropertyname)<span title="Required">*</span> | `string` | Name of your project/service. |
 | [`defaultRegion`](#almamediaopensourcecdkprojectcontextprojectpropspropertydefaultregion) | `string` | Specify default region you wish to use. |
 | [`analyticsReporting`](#almamediaopensourcecdkprojectcontextprojectpropspropertyanalyticsreporting) | `boolean` | Include runtime versioning information in the Stacks of this app. |
 | [`autoSynth`](#almamediaopensourcecdkprojectcontextprojectpropspropertyautosynth) | `boolean` | Automatically call `synth()` before the program exits. |
@@ -236,6 +272,10 @@ public readonly accounts: {[ key: string ]: Account};
 
 - *Type:* {[ key: string ]: [`@almamedia-open-source/cdk-project-context.Account`](#@almamedia-open-source/cdk-project-context.Account)}
 
+Dictionary of AWS account specific configuration.
+
+The key value can be anything (such as AWS Account alias), but it's recommended to keep it short such as `dev` or `prod`.
+
 ---
 
 ##### `author`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectProps.property.author" id="almamediaopensourcecdkprojectcontextprojectpropspropertyauthor"></a>
@@ -246,6 +286,10 @@ public readonly author: Author;
 
 - *Type:* [`@almamedia-open-source/cdk-project-context.Author`](#@almamedia-open-source/cdk-project-context.Author)
 
+Author information.
+
+I.e. who owns/develops this project/service.
+
 ---
 
 ##### `name`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectProps.property.name" id="almamediaopensourcecdkprojectcontextprojectpropspropertyname"></a>
@@ -255,6 +299,10 @@ public readonly name: string;
 ```
 
 - *Type:* `string`
+
+Name of your project/service.
+
+Prefer `hyphen-case`.
 
 ---
 
@@ -380,6 +428,12 @@ new ProjectContext()
 | --- | --- |
 | [`getAccountConfig`](#almamediaopensourcecdkprojectcontextprojectcontextgetaccountconfig) | *No description.* |
 | [`getAccountId`](#almamediaopensourcecdkprojectcontextprojectcontextgetaccountid) | *No description.* |
+| [`getAccountType`](#almamediaopensourcecdkprojectcontextprojectcontextgetaccounttype) | *No description.* |
+| [`getAuthorEmail`](#almamediaopensourcecdkprojectcontextprojectcontextgetauthoremail) | *No description.* |
+| [`getAuthorName`](#almamediaopensourcecdkprojectcontextprojectcontextgetauthorname) | *No description.* |
+| [`getAuthorOrganization`](#almamediaopensourcecdkprojectcontextprojectcontextgetauthororganization) | *No description.* |
+| [`getDefaultRegion`](#almamediaopensourcecdkprojectcontextprojectcontextgetdefaultregion) | *No description.* |
+| [`getName`](#almamediaopensourcecdkprojectcontextprojectcontextgetname) | *No description.* |
 
 ---
 
@@ -409,6 +463,90 @@ ProjectContext.getAccountConfig(scope: Construct, key: string)
 import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
 
 ProjectContext.getAccountId(scope: Construct)
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+##### `getAccountType` <a name="@almamedia-open-source/cdk-project-context.ProjectContext.getAccountType" id="almamediaopensourcecdkprojectcontextprojectcontextgetaccounttype"></a>
+
+```typescript
+import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
+
+ProjectContext.getAccountType(scope: Construct)
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+##### `getAuthorEmail` <a name="@almamedia-open-source/cdk-project-context.ProjectContext.getAuthorEmail" id="almamediaopensourcecdkprojectcontextprojectcontextgetauthoremail"></a>
+
+```typescript
+import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
+
+ProjectContext.getAuthorEmail(scope: Construct)
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+##### `getAuthorName` <a name="@almamedia-open-source/cdk-project-context.ProjectContext.getAuthorName" id="almamediaopensourcecdkprojectcontextprojectcontextgetauthorname"></a>
+
+```typescript
+import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
+
+ProjectContext.getAuthorName(scope: Construct)
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+##### `getAuthorOrganization` <a name="@almamedia-open-source/cdk-project-context.ProjectContext.getAuthorOrganization" id="almamediaopensourcecdkprojectcontextprojectcontextgetauthororganization"></a>
+
+```typescript
+import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
+
+ProjectContext.getAuthorOrganization(scope: Construct)
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+##### `getDefaultRegion` <a name="@almamedia-open-source/cdk-project-context.ProjectContext.getDefaultRegion" id="almamediaopensourcecdkprojectcontextprojectcontextgetdefaultregion"></a>
+
+```typescript
+import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
+
+ProjectContext.getDefaultRegion(scope: Construct)
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+##### `getName` <a name="@almamedia-open-source/cdk-project-context.ProjectContext.getName" id="almamediaopensourcecdkprojectcontextprojectcontextgetname"></a>
+
+```typescript
+import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
+
+ProjectContext.getName(scope: Construct)
 ```
 
 ###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>

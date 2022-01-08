@@ -54,11 +54,11 @@ export class Project extends App {
       defaultRegion: resolveDefaultRegion(props.defaultRegion),
     };
 
-    super({                 // initialize the cdk.App
-      ...props,             // and pass in the given props
-      context: {            // but overwrite context
-        ...props.context,   // while still passing the context given in props
-        [Project.CONTEXT_SCOPE]: config,  // and inject project context
+    super({ // initialize the cdk.App
+      ...props, // and pass in the given props
+      context: { // but overwrite context
+        ...props.context, // while still passing the context given in props
+        [Project.CONTEXT_SCOPE]: config, // and inject project context
       },
     });
   }

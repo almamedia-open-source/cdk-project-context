@@ -6,11 +6,10 @@
 
 Opinionated CDK utility **construct for managing project information & AWS account-specific configuration**.
 
-When used, a developer can be quaranteed the information is available and in correct format – or otherwise `cdk synth|diff|deploy` will fail.
-
 Why you'd use this?
 1. If you use multi-account deployments, i.e. separate `dev` and `prod` workloads to different accounts.
 2. Especially if you develop microservices, you end up with a lot of CDK projects. Without well-defined method of managing project configuration one often ends up reinventing the wheel in each project.
+3. A developer can be quaranteed the configuration information is available and in correct format – or otherwise `cdk synth|diff|deploy` will fail.
 
 Note: This is not a replacement for tools such as AWS AppConfig, Parameter Store or Secrets Manager! Project Context should only contain non-secret values that define "where to deploy" and certain values that you may wish to use for example as part of tagging or naming resources.
 

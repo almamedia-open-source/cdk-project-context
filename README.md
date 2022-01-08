@@ -108,3 +108,35 @@ Note: This is not a replacement for tools such as AWS AppConfig, Parameter Store
     | AccountType        | `dev`                             |
     | AccountId          | `111111111111`                    |
     | AccountBaseDomain  | `example.net`                     |
+
+### Application Environment Retrieval
+
+Often you may want to deploy multiple different application environments – “isolated copies” of your CDK application such as feature environments – into same AWS account. To manage that, you need some kind of "modifier" which selects the target application environment.
+
+You may use this utility to retrieve application _environment_ information. In the context of this utility, _environment_ is just a string value such as `staging` or `production` – not to be confused with [CDK environments](https://docs.aws.amazon.com/cdk/v2/guide/environments.html) (which instead define the target AWS Account & Region configuration for a stack).
+
+1. Somewhere in your stacks you may use static method `ProjectContext.getEnvironment(scope)`:
+    ```ts
+    import { Stack, StackProps, CfnOutput } from 'aws-cdk-lib';
+    import { PC } from '@almamedia-open-source/cdk-project-context'; // Using the PC shorthand here
+
+    export class MyStack extends Stack {
+      constructor(scope: Construct, id: string, props?: StackProps) {
+        super(scope, id, props);
+
+        // Get the default region for this project
+        new CfnOutput(this, 'Environment', { value: PC.getEnvironment(this) });
+      }
+    }
+    ```
+
+2. Specify `environment-type` (or shorthand: `environment` or `env`) CLI context flag to **_select_ the desired environment**:
+    ```shell
+    npx cdk deploy --context account=dev --context environment=staging
+    ```
+
+
+3. You'll get the following CloudFormation outputs:
+    |    Name     | Example Value |
+    | :---------- | :------------ |
+    | Environment | `staging`     |

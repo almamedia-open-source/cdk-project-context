@@ -15,9 +15,14 @@ Note: This is not a replacement for tools such as AWS AppConfig, Parameter Store
 
 ## Installation
 
-```shell
-npm i -D @almamedia-open-source/cdk-project-context
-```
+1. Ensure you meet following requirements:
+    - [NodeJS](https://nodejs.org/en/) `v14.17.6` or newer
+    - [AWS Cloud Development Kit](https://aws.amazon.com/cdk/) `v2.0.0` or newer
+
+2. Install:
+    ```shell
+    npm i -D @almamedia-open-source/cdk-project-context
+    ```
 
 ## Usage
 

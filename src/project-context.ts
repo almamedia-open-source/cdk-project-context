@@ -14,7 +14,7 @@ export class ProjectContext {
 
     if (typeof type !== 'string') {
       // TODO decide if add annotation or throw?
-      Annotations.of(scope).addError('Account Type not specified! Provide account type as context argument for CDK CLI, for example: --context account=dev');
+      Annotations.of(scope).addError('Account Type not specified! Provide account type as context argument for CDK CLI, for example: --context account-type=dev');
     }
 
     return type;
@@ -55,12 +55,19 @@ export class ProjectContext {
     return projectContext.author.email;
   }
 
-  static getEnvironment(scope: Construct): string | undefined {
-    return (
+  static getEnvironment(scope: Construct): string {
+    const environment = (
       scope.node.tryGetContext('environment-type') ||
       scope.node.tryGetContext('environment') ||
       scope.node.tryGetContext('env')
     );
+
+    if (typeof environment !== 'string') {
+      // TODO decide if add annotation or throw?
+      Annotations.of(scope).addError('Environment Type not specified! Provide environment type as context argument for CDK CLI, for example: --context environment-type=staging');
+    }
+
+    return environment;
   }
 
   private static getProjectContext(scope: Construct): ProjectConfiguration {

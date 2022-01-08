@@ -435,6 +435,7 @@ new ProjectContext()
 | [`getDefaultRegion`](#almamediaopensourcecdkprojectcontextprojectcontextgetdefaultregion) | *No description.* |
 | [`getEnvironment`](#almamediaopensourcecdkprojectcontextprojectcontextgetenvironment) | *No description.* |
 | [`getName`](#almamediaopensourcecdkprojectcontextprojectcontextgetname) | *No description.* |
+| [`tryGetEnvironment`](#almamediaopensourcecdkprojectcontextprojectcontexttrygetenvironment) | *No description.* |
 
 ---
 
@@ -562,6 +563,20 @@ ProjectContext.getEnvironment(scope: Construct)
 import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
 
 ProjectContext.getName(scope: Construct)
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+##### `tryGetEnvironment` <a name="@almamedia-open-source/cdk-project-context.ProjectContext.tryGetEnvironment" id="almamediaopensourcecdkprojectcontextprojectcontexttrygetenvironment"></a>
+
+```typescript
+import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
+
+ProjectContext.tryGetEnvironment(scope: Construct)
 ```
 
 ###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>

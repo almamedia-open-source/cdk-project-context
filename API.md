@@ -433,6 +433,7 @@ new ProjectContext()
 | [`getAuthorName`](#almamediaopensourcecdkprojectcontextprojectcontextgetauthorname) | *No description.* |
 | [`getAuthorOrganization`](#almamediaopensourcecdkprojectcontextprojectcontextgetauthororganization) | *No description.* |
 | [`getDefaultRegion`](#almamediaopensourcecdkprojectcontextprojectcontextgetdefaultregion) | *No description.* |
+| [`getEnvironment`](#almamediaopensourcecdkprojectcontextprojectcontextgetenvironment) | *No description.* |
 | [`getName`](#almamediaopensourcecdkprojectcontextprojectcontextgetname) | *No description.* |
 
 ---
@@ -533,6 +534,20 @@ ProjectContext.getAuthorOrganization(scope: Construct)
 import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
 
 ProjectContext.getDefaultRegion(scope: Construct)
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+##### `getEnvironment` <a name="@almamedia-open-source/cdk-project-context.ProjectContext.getEnvironment" id="almamediaopensourcecdkprojectcontextprojectcontextgetenvironment"></a>
+
+```typescript
+import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
+
+ProjectContext.getEnvironment(scope: Construct)
 ```
 
 ###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>

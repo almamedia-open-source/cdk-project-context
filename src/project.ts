@@ -25,8 +25,6 @@ export class Project extends App {
         [Project.CONTEXT_SCOPE]: projectContext,
       },
     });
-
-    //this.node.setContext(CONTEXT_SCOPE, projectContext);
   }
 
 }

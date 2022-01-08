@@ -2,7 +2,10 @@ import { App, AppProps } from 'aws-cdk-lib';
 import { ProjectConfiguration } from './interfaces';
 import { resolveDefaultRegion } from './resolve-region';
 
-
+/** Props given to `Project`.
+ *
+ * I.e. custom props for this construct and the usual props given to `cdk.App`.
+ * */
 export interface ProjectProps extends ProjectConfiguration, AppProps {}
 
 /** High-level wrapper for `cdk.App` with specific requirements for props.

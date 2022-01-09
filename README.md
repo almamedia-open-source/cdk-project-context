@@ -13,6 +13,8 @@ Why you'd use this?
 
 Note: This is not a replacement for tools such as AWS AppConfig, Parameter Store or Secrets Manager! Project Context should only contain non-secret values that define "where to deploy" and certain values that you may wish to use for example as part of tagging or naming resources.
 
+<br/>
+
 ## Important
 
 **🚧 This tool is work-in-progress and experimental!**
@@ -22,6 +24,8 @@ All `@almamedia-open-source/cdk-` prefixed constructs/utilities are based on exi
 _Breaking changes may occur at any given time without prior warning before first `v1` major is released_, as we rewrite them for CDK v2 and use this opportunity to also redesign & refactor.
 
 [Feedback](https://github.com/almamedia-open-source/cdk-project-context/issues) is most welcome, but do note that we intend to implement these new constructs/utilities and their APIs in such manner that our existing CDK v1 production workloads can easily migrate into these new `@almamedia-open-source/cdk-` constructs/utilities.
+
+<br/>
 
 ## Installation
 
@@ -33,6 +37,8 @@ _Breaking changes may occur at any given time without prior warning before first
     ```shell
     npm i -D @almamedia-open-source/cdk-project-context
     ```
+
+<br/>
 
 ## Usage
 
@@ -114,6 +120,8 @@ _Breaking changes may occur at any given time without prior warning before first
     | AccountType        | `dev`                             |
     | AccountId          | `111111111111`                    |
     | AccountBaseDomain  | `example.net`                     |
+
+<br/>
 
 ### Application Environment Retrieval
 

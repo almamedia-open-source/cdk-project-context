@@ -10,6 +10,7 @@ const project = new AwsCdkConstructLibrary({
   authorOrganization: true,
   authorAddress: 'opensource@almamedia.dev',
   name: '@almamedia-open-source/cdk-project-context',
+  description: 'Opinionated CDK utility construct for managing project information & AWS account-specific configuration.',
   repositoryUrl: 'https://github.com/almamedia-open-source/cdk-project-context.git',
   keywords: ['cdk', 'aws-cdk', 'awscdk', 'aws'],
 

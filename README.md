@@ -1,10 +1,10 @@
-# AWS CDK Project Context
+# ![Alma CDK Project Context](/assets/alma-cdk-project-context.png)
 
 ![CDK Version](https://img.shields.io/badge/CDK-v2-informational "CDK v2")
 ![Stability](https://img.shields.io/badge/Stability-Experimental-yellow "Stability: Experimental")
 [![release](https://github.com/almamedia-open-source/cdk-project-context/actions/workflows/release.yml/badge.svg)](https://github.com/almamedia-open-source/cdk-project-context/actions/workflows/release.yml)
 
-Opinionated CDK utility **construct for managing project information & AWS account-specific configuration**.
+CDK utility **construct for managing project information & AWS account-specific configuration**.
 
 Why you'd use this?
 1. If you use multi-account deployments, i.e. separate `dev` and `prod` workloads to different accounts.

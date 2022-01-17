@@ -1,8 +1,8 @@
-const { AwsCdkConstructLibrary, TextFile, NpmAccess } = require('projen');
+const { awscdk, TextFile, javascript } = require('projen');
 
 const nodejsVersion = '14.17.6';
 
-const project = new AwsCdkConstructLibrary({
+const project = new awscdk.AwsCdkConstructLibrary({
 
   // Metadata
   stability: 'experimental',
@@ -16,7 +16,7 @@ const project = new AwsCdkConstructLibrary({
 
   // Publish configuration
   defaultReleaseBranch: 'main',
-  npmAccess: NpmAccess.PUBLIC,
+  npmAccess: javascript.NpmAccess.PUBLIC,
 
   // Dependencies
   minNodeVersion: nodejsVersion,

@@ -622,6 +622,51 @@ EnvironmentType.set(scope: Construct, environmentType: string)
 
 
 
+### EnvRegExp <a name="@almamedia-open-source/cdk-project-context.EnvRegExp" id="almamediaopensourcecdkprojectcontextenvregexp"></a>
+
+#### Initializers <a name="@almamedia-open-source/cdk-project-context.EnvRegExp.Initializer" id="almamediaopensourcecdkprojectcontextenvregexpinitializer"></a>
+
+```typescript
+import { EnvRegExp } from '@almamedia-open-source/cdk-project-context'
+
+new EnvRegExp(base: string)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`base`](#almamediaopensourcecdkprojectcontextenvregexpparameterbase)<span title="Required">*</span> | `string` | *No description.* |
+
+---
+
+##### `base`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.EnvRegExp.parameter.base" id="almamediaopensourcecdkprojectcontextenvregexpparameterbase"></a>
+
+- *Type:* `string`
+
+---
+
+#### Methods <a name="Methods" id="methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`test`](#almamediaopensourcecdkprojectcontextenvregexptest) | *No description.* |
+
+---
+
+##### `test` <a name="@almamedia-open-source/cdk-project-context.EnvRegExp.test" id="almamediaopensourcecdkprojectcontextenvregexptest"></a>
+
+```typescript
+public test(value: string)
+```
+
+###### `value`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.EnvRegExp.parameter.value" id="almamediaopensourcecdkprojectcontextenvregexpparametervalue"></a>
+
+- *Type:* `string`
+
+---
+
+
+
+
 ### ProjectContext <a name="@almamedia-open-source/cdk-project-context.ProjectContext" id="almamediaopensourcecdkprojectcontextprojectcontext"></a>
 
 #### Initializers <a name="@almamedia-open-source/cdk-project-context.ProjectContext.Initializer" id="almamediaopensourcecdkprojectcontextprojectcontextinitializer"></a>

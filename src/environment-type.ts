@@ -1,6 +1,6 @@
-import { Annotations } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { EnvRegExp } from './envregexp';
+import { addError } from './error';
 
 
 export class EnvironmentType {
@@ -18,7 +18,7 @@ export class EnvironmentType {
       scope.node.tryGetContext("env");
 
     if (typeof environmentType !== "string") {
-      Annotations.of(scope).addError(
+      addError(scope,
         "Environment Type not specified! Provide environment type as context argument for CDK CLI, for example: --context environment-type=staging"
       );
     }
@@ -28,7 +28,7 @@ export class EnvironmentType {
     );
 
     if (matches.length < 1) {
-      Annotations.of(scope).addError(
+      addError(scope,
         `Environment Type ${environmentType} not allowed in your configuration`
       );
     }

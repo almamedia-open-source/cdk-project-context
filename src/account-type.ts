@@ -1,8 +1,8 @@
-import { Annotations } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { findKey } from 'lodash';
 import { EnvRegExp } from './envregexp';
-import { Account, ProjectConfiguration } from './interfaces';
+import { addError } from './error';
+import { Account } from './interfaces';
 
 /**
  * Internal class to handle set/get operations for Account Type
@@ -20,7 +20,7 @@ export class AccountType {
       scope.node.tryGetContext('account');
 
     if (typeof accountType !== 'string') {
-      Annotations.of(scope).addError(
+      addError(scope,
         'Account Type not specified! Provide account type as context argument for CDK CLI, for example: --context account-type=dev'
       );
     }
@@ -41,7 +41,7 @@ export class AccountType {
     );
 
     if (typeof accountType !== 'string') {
-      Annotations.of(scope).addError(
+      addError(scope,
         `Could not find matching account type for given environment ${environmentType}`
       );
       return '';

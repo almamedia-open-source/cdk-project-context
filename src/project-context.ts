@@ -1,9 +1,9 @@
-import { Annotations } from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { Account, ProjectConfiguration } from "./interfaces";
 import { Project } from "./project";
 import { AccountType } from './account-type';
 import { EnvironmentType } from "./environment-type";
+import { addError } from './error';
 
 export class ProjectContext {
   /**
@@ -100,7 +100,7 @@ export class ProjectContext {
       scope.node.tryGetContext(Project.CONTEXT_SCOPE)
     );
     if (typeof projectContext === "undefined") {
-      Annotations.of(scope).addError(
+      addError(scope,
         "Project configuration missing. Did you forgot to instantiate new Project (instead of new App)?"
       );
     }
@@ -115,7 +115,7 @@ export class ProjectContext {
     const projectConfiguration = ProjectContext.getProjectConfiguration(scope);
 
     if (!(accountType in projectConfiguration.accounts)) {
-      Annotations.of(scope).addError(
+      addError(scope,
         `Account Type ${accountType} not defined in Project Configuration Accounts`
       );
     }

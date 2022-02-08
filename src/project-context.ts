@@ -73,7 +73,6 @@ export class ProjectContext {
     return AccountType.matchFromEnvironment(scope, projectConfiguration.accounts, environmentType);
   }
 
-
   /**
    * Returns the account specific project configuration
    */

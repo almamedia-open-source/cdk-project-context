@@ -113,6 +113,13 @@ export class ProjectContext {
   private static getProjectAccountConfiguration(scope: Construct): Account {
     const accountType = ProjectContext.getAccountType(scope);
     const projectConfiguration = ProjectContext.getProjectConfiguration(scope);
+
+    if (!(accountType in projectConfiguration.accounts)) {
+      Annotations.of(scope).addError(
+        `Account Type ${accountType} not defined in Project Configuration Accounts`
+      );
+    }
+
     return projectConfiguration.accounts[accountType];
   }
 }

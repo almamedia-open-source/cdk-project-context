@@ -1,5 +1,5 @@
 import { Construct } from "constructs";
-import { Account, ProjectConfiguration } from "./interfaces";
+import { Account } from "./interfaces";
 import { Project } from "./project";
 import { AccountType } from './account-type';
 import { EnvironmentType } from "./environment-type";
@@ -24,27 +24,27 @@ export class ProjectContext {
   }
 
   static getDefaultRegion(scope: Construct): string {
-    const projectConfiguration = ProjectContext.getProjectConfiguration(scope);
+    const projectConfiguration = Project.getConfiguration(scope);
     return projectConfiguration.defaultRegion!;
   }
 
   static getName(scope: Construct): string {
-    const projectConfiguration = ProjectContext.getProjectConfiguration(scope);
+    const projectConfiguration = Project.getConfiguration(scope);
     return projectConfiguration.name;
   }
 
   static getAuthorOrganization(scope: Construct): string | undefined {
-    const projectConfiguration = ProjectContext.getProjectConfiguration(scope);
+    const projectConfiguration = Project.getConfiguration(scope);
     return projectConfiguration.author.organization;
   }
 
   static getAuthorName(scope: Construct): string {
-    const projectConfiguration = ProjectContext.getProjectConfiguration(scope);
+    const projectConfiguration = Project.getConfiguration(scope);
     return projectConfiguration.author.name;
   }
 
   static getAuthorEmail(scope: Construct): string | undefined {
-    const projectConfiguration = ProjectContext.getProjectConfiguration(scope);
+    const projectConfiguration = Project.getConfiguration(scope);
     return projectConfiguration.author.email;
   }
 
@@ -85,34 +85,17 @@ export class ProjectContext {
     scope: Construct,
     environmentType: string
   ): string {
-    const projectConfiguration = ProjectContext.getProjectConfiguration(scope);
+    const projectConfiguration = Project.getConfiguration(scope);
     return AccountType.matchFromEnvironment(scope, projectConfiguration.accounts, environmentType);
   }
 
-
-  /**
-   * Returns the project configuration
-   */
-  private static getProjectConfiguration(
-    scope: Construct
-  ): ProjectConfiguration {
-    const projectConfiguration = <ProjectConfiguration | undefined>(
-      scope.node.tryGetContext(Project.CONTEXT_SCOPE)
-    );
-    if (typeof projectConfiguration === "undefined") {
-      addError(scope,
-        "Project configuration missing. Did you forgot to instantiate new Project (instead of new App)?"
-      );
-    }
-    return <ProjectConfiguration>projectConfiguration;
-  }
 
   /**
    * Returns the account specific project configuration
    */
   private static getProjectAccountConfiguration(scope: Construct): Account {
     const accountType = ProjectContext.getAccountType(scope);
-    const projectConfiguration = ProjectContext.getProjectConfiguration(scope);
+    const projectConfiguration = Project.getConfiguration(scope);
 
     if (!(accountType in projectConfiguration.accounts)) {
       addError(scope,

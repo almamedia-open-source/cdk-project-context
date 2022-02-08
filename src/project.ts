@@ -1,6 +1,8 @@
+import { Construct } from "constructs";
 import { App, AppProps } from 'aws-cdk-lib';
 import { ProjectConfiguration } from './interfaces';
 import { resolveDefaultRegion } from './resolve-region';
+import { addError } from "./error";
 
 /** Props given to `Project`.
  *
@@ -25,12 +27,14 @@ export interface ProjectProps extends ProjectConfiguration, AppProps {}
  *   accounts: {
  *     dev: {
  *       id: '111111111111',
+ *       environments: ['development', 'feature/.*', 'staging'],
  *       config: {
  *         baseDomain: 'example.net',
  *       },
  *     },
  *     prod: {
  *       id: '222222222222',
+ *       environments: ['production'],
  *       config: {
  *         baseDomain: 'example.com',
  *       },
@@ -63,6 +67,19 @@ export class Project extends App {
         [Project.CONTEXT_SCOPE]: config, // and inject project context
       },
     });
+  }
+
+  /** Return the project configuration as given in ProjectProps */
+  public static getConfiguration(scope: Construct): ProjectConfiguration {
+    const projectConfiguration = <ProjectConfiguration | undefined>(
+      scope.node.tryGetContext(Project.CONTEXT_SCOPE)
+    );
+    if (typeof projectConfiguration === "undefined") {
+      addError(scope,
+        "Project configuration missing. Did you forgot to instantiate new Project (instead of new App)?"
+      );
+    }
+    return <ProjectConfiguration>projectConfiguration;
   }
 
 }

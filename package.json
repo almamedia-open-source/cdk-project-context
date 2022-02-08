@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@types/jest": "^27.4.0",
+    "@types/lodash": "^4.14.178",
     "@types/node": "^14",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
@@ -52,6 +53,7 @@
     "jsii-diff": "^1.46.0",
     "jsii-docgen": "^4.2.4",
     "json-schema": "^0.4.0",
+    "lodash": "^4.17.21",
     "npm-check-updates": "^12",
     "projen": "^0.50.33",
     "standard-version": "^9",
@@ -62,6 +64,12 @@
     "aws-cdk-lib": "^2.0.0",
     "constructs": "^10.0.0"
   },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "bundledDependencies": [
+    "lodash"
+  ],
   "keywords": [
     "aws",
     "aws-cdk",

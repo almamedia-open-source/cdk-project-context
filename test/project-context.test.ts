@@ -12,12 +12,14 @@ const config = {
   accounts: {
     dev: {
       id: '111111111111',
+      environments: ['development', 'feature/.*', 'staging'],
       config: {
         baseDomain: 'example.net',
       },
     },
     prod: {
       id: '222222222222',
+      environments: ['production'],
       config: {
         baseDomain: 'example.com',
       },
@@ -53,6 +55,24 @@ describe('Project Context', () => {
     expect(baseDomain).toBe(config.accounts[accountType].config.baseDomain);
   });
 
+
+  test('foo', () => {
+    const vastaus = ProjectContext.foo(config.accounts, 'development');
+    expect(vastaus).toBe('dev');
+  });
+
+
+  test('Get Account Type by Environment Type', () => {
+    const project = new Project({ ...config, context: { environment: 'development' } });
+    const stack = new Stack(project, 'MyStack');
+    const type = ProjectContext.getAccountTypeByEnvironment(stack, 'development');
+    expect(type).toBe(accountType);
+  });
+
+
   // TODO add tests for all the methods
+  //test('', () => {})
 
 });
+
+

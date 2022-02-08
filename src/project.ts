@@ -54,6 +54,8 @@ export class Project extends App {
       defaultRegion: resolveDefaultRegion(props.defaultRegion),
     };
 
+    // TODO validate no duplicate environments in accounts
+
     super({ // initialize the cdk.App
       ...props, // and pass in the given props
       context: { // but overwrite context

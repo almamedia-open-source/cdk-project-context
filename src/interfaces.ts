@@ -9,6 +9,16 @@ export interface Account {
    */
   readonly id: string;
 
+  /**
+   * List of accepted environments for the given account.
+   *
+   * List of strings or strings representing regexp initialization (passed onto `new Regexp("^"+environment+"$", "i")`).
+   *
+   * @example
+   * ["development", "feature/.*"]
+   */
+  readonly environments?: string[];
+
   /** AWS account specific configuration.
    *
    * For example VPC IDs (for existing VPCs), Direct Connect Gateway IDs, apex domain names (for Route53 Zone lookups), etc. Basically configuration for resources that are defined outside of this CDK application.

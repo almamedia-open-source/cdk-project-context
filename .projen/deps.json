@@ -5,6 +5,10 @@
       "type": "build"
     },
     {
+      "name": "@types/lodash",
+      "type": "build"
+    },
+    {
       "name": "@types/node",
       "version": "^14",
       "type": "build"
@@ -72,6 +76,10 @@
       "type": "build"
     },
     {
+      "name": "lodash",
+      "type": "build"
+    },
+    {
       "name": "npm-check-updates",
       "version": "^12",
       "type": "build"
@@ -92,6 +100,10 @@
     {
       "name": "typescript",
       "type": "build"
+    },
+    {
+      "name": "lodash",
+      "type": "bundled"
     },
     {
       "name": "aws-cdk-lib",

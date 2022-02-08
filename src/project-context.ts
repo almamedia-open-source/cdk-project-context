@@ -24,28 +24,28 @@ export class ProjectContext {
   }
 
   static getDefaultRegion(scope: Construct): string {
-    const projectContext = ProjectContext.getProjectConfiguration(scope);
-    return projectContext.defaultRegion!;
+    const projectConfiguration = ProjectContext.getProjectConfiguration(scope);
+    return projectConfiguration.defaultRegion!;
   }
 
   static getName(scope: Construct): string {
-    const projectContext = ProjectContext.getProjectConfiguration(scope);
-    return projectContext.name;
+    const projectConfiguration = ProjectContext.getProjectConfiguration(scope);
+    return projectConfiguration.name;
   }
 
   static getAuthorOrganization(scope: Construct): string | undefined {
-    const projectContext = ProjectContext.getProjectConfiguration(scope);
-    return projectContext.author.organization;
+    const projectConfiguration = ProjectContext.getProjectConfiguration(scope);
+    return projectConfiguration.author.organization;
   }
 
   static getAuthorName(scope: Construct): string {
-    const projectContext = ProjectContext.getProjectConfiguration(scope);
-    return projectContext.author.name;
+    const projectConfiguration = ProjectContext.getProjectConfiguration(scope);
+    return projectConfiguration.author.name;
   }
 
   static getAuthorEmail(scope: Construct): string | undefined {
-    const projectContext = ProjectContext.getProjectConfiguration(scope);
-    return projectContext.author.email;
+    const projectConfiguration = ProjectContext.getProjectConfiguration(scope);
+    return projectConfiguration.author.email;
   }
 
   static getAllowedEnvironments(scope: Construct): string[] {
@@ -96,15 +96,15 @@ export class ProjectContext {
   private static getProjectConfiguration(
     scope: Construct
   ): ProjectConfiguration {
-    const projectContext = <ProjectConfiguration | undefined>(
+    const projectConfiguration = <ProjectConfiguration | undefined>(
       scope.node.tryGetContext(Project.CONTEXT_SCOPE)
     );
-    if (typeof projectContext === "undefined") {
+    if (typeof projectConfiguration === "undefined") {
       addError(scope,
         "Project configuration missing. Did you forgot to instantiate new Project (instead of new App)?"
       );
     }
-    return <ProjectConfiguration>projectContext;
+    return <ProjectConfiguration>projectConfiguration;
   }
 
   /**

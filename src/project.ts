@@ -1,7 +1,7 @@
 import { App, AppProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { addError } from './error';
-import { ProjectConfiguration } from './interfaces';
+import { Account, ProjectConfiguration } from './interfaces';
 import { resolveDefaultRegion } from './resolve-region';
 
 /** Props given to `Project`.
@@ -58,6 +58,19 @@ export class Project extends App {
       );
     }
     return <ProjectConfiguration>projectConfiguration;
+  }
+
+  /** Return account configuration */
+  public static getAccount(scope: Construct, accountType: string): Account {
+    const projectConfiguration = Project.getConfiguration(scope);
+
+    if (!(accountType in projectConfiguration.accounts)) {
+      addError(scope,
+        `Account Type ${accountType} not defined in Project Configuration Accounts`,
+      );
+    }
+
+    return projectConfiguration.accounts[accountType];
   }
 
   /** Initializes a new Project (which can be used in place of cdk.App) */

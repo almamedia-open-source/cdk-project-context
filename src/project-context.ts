@@ -1,7 +1,6 @@
 import { Construct } from 'constructs';
 import { AccountType } from './account-type';
 import { EnvironmentType } from './environment-type';
-import { addError } from './error';
 import { Account } from './interfaces';
 import { Project } from './project';
 

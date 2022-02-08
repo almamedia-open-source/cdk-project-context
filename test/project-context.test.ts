@@ -55,7 +55,7 @@ describe('Project Context', () => {
     expect(baseDomain).toBe(config.accounts[accountType].config.baseDomain);
   });
 
-
+  /*
   test('foo', () => {
     const vastaus = ProjectContext.foo(config.accounts, 'development');
     expect(vastaus).toBe('dev');
@@ -68,6 +68,7 @@ describe('Project Context', () => {
     const type = ProjectContext.getAccountTypeByEnvironment(stack, 'development');
     expect(type).toBe(accountType);
   });
+  */
 
 
   // TODO add tests for all the methods

@@ -1,8 +1,8 @@
-import { Construct } from "constructs";
 import { App, AppProps } from 'aws-cdk-lib';
+import { Construct } from 'constructs';
+import { addError } from './error';
 import { ProjectConfiguration } from './interfaces';
 import { resolveDefaultRegion } from './resolve-region';
-import { addError } from "./error";
 
 /** Props given to `Project`.
  *
@@ -47,6 +47,19 @@ export class Project extends App {
   /** Namespace/key how this tool internally keeps track of the project configuration */
   public static readonly CONTEXT_SCOPE = '@almamedia-open-source/cdk-project-context@v1';
 
+  /** Return the project configuration as given in ProjectProps */
+  public static getConfiguration(scope: Construct): ProjectConfiguration {
+    const projectConfiguration = <ProjectConfiguration | undefined>(
+      scope.node.tryGetContext(Project.CONTEXT_SCOPE)
+    );
+    if (typeof projectConfiguration === 'undefined') {
+      addError(scope,
+        'Project configuration missing. Did you forgot to instantiate new Project (instead of new App)?',
+      );
+    }
+    return <ProjectConfiguration>projectConfiguration;
+  }
+
   /** Initializes a new Project (which can be used in place of cdk.App) */
   constructor(props: ProjectProps) {
 
@@ -67,19 +80,6 @@ export class Project extends App {
         [Project.CONTEXT_SCOPE]: config, // and inject project context
       },
     });
-  }
-
-  /** Return the project configuration as given in ProjectProps */
-  public static getConfiguration(scope: Construct): ProjectConfiguration {
-    const projectConfiguration = <ProjectConfiguration | undefined>(
-      scope.node.tryGetContext(Project.CONTEXT_SCOPE)
-    );
-    if (typeof projectConfiguration === "undefined") {
-      addError(scope,
-        "Project configuration missing. Did you forgot to instantiate new Project (instead of new App)?"
-      );
-    }
-    return <ProjectConfiguration>projectConfiguration;
   }
 
 }

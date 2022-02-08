@@ -21,7 +21,7 @@ export class AccountType {
 
     if (typeof accountType !== 'string') {
       addError(scope,
-        'Account Type not specified! Provide account type as context argument for CDK CLI, for example: --context account-type=dev'
+        'Account Type not specified! Provide account type as context argument for CDK CLI, for example: --context account-type=dev',
       );
     }
 
@@ -35,14 +35,14 @@ export class AccountType {
   ): string {
 
     const accountType = findKey(accounts, (account) =>
-    account.environments?.filter((environment) =>
-      new EnvRegExp(environment).test(environmentType)
-      )
+      account.environments?.filter((environment) =>
+        new EnvRegExp(environment).test(environmentType),
+      ),
     );
 
     if (typeof accountType !== 'string') {
       addError(scope,
-        `Could not find matching account type for given environment ${environmentType}`
+        `Could not find matching account type for given environment ${environmentType}`,
       );
       return '';
     }

@@ -29,6 +29,27 @@ new Project(props: ProjectProps)
 ---
 
 
+#### Static Functions <a name="Static Functions" id="static-functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`getConfiguration`](#almamediaopensourcecdkprojectcontextprojectgetconfiguration) | Return the project configuration as given in ProjectProps. |
+
+---
+
+##### `getConfiguration` <a name="@almamedia-open-source/cdk-project-context.Project.getConfiguration" id="almamediaopensourcecdkprojectcontextprojectgetconfiguration"></a>
+
+```typescript
+import { Project } from '@almamedia-open-source/cdk-project-context'
+
+Project.getConfiguration(scope: Construct)
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.Project.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
 
 
 #### Constants <a name="Constants" id="constants"></a>
@@ -67,6 +88,7 @@ const account: Account = { ... }
 | --- | --- | --- |
 | [`id`](#almamediaopensourcecdkprojectcontextaccountpropertyid)<span title="Required">*</span> | `string` | AWS Account ID. |
 | [`config`](#almamediaopensourcecdkprojectcontextaccountpropertyconfig) | {[ key: string ]: `any`} | AWS account specific configuration. |
+| [`environments`](#almamediaopensourcecdkprojectcontextaccountpropertyenvironments) | `string`[] | List of accepted environments for the given account. |
 
 ---
 
@@ -93,6 +115,20 @@ public readonly config: {[ key: string ]: any};
 AWS account specific configuration.
 
 For example VPC IDs (for existing VPCs), Direct Connect Gateway IDs, apex domain names (for Route53 Zone lookups), etc. Basically configuration for resources that are defined outside of this CDK application.
+
+---
+
+##### `environments`<sup>Optional</sup> <a name="@almamedia-open-source/cdk-project-context.Account.property.environments" id="almamediaopensourcecdkprojectcontextaccountpropertyenvironments"></a>
+
+```typescript
+public readonly environments: string[];
+```
+
+- *Type:* `string`[]
+
+List of accepted environments for the given account.
+
+List of strings or strings representing regexp initialization (passed onto `new Regexp("^"+environment+"$", "i")`).
 
 ---
 
@@ -406,6 +442,165 @@ Include construct tree metadata as part of the Cloud Assembly.
 
 ## Classes <a name="Classes" id="classes"></a>
 
+### AccountType <a name="@almamedia-open-source/cdk-project-context.AccountType" id="almamediaopensourcecdkprojectcontextaccounttype"></a>
+
+Internal class to handle set/get operations for Account Type.
+
+#### Initializers <a name="@almamedia-open-source/cdk-project-context.AccountType.Initializer" id="almamediaopensourcecdkprojectcontextaccounttypeinitializer"></a>
+
+```typescript
+import { AccountType } from '@almamedia-open-source/cdk-project-context'
+
+new AccountType()
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+
+---
+
+
+#### Static Functions <a name="Static Functions" id="static-functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`get`](#almamediaopensourcecdkprojectcontextaccounttypeget) | *No description.* |
+| [`matchFromEnvironment`](#almamediaopensourcecdkprojectcontextaccounttypematchfromenvironment) | *No description.* |
+| [`set`](#almamediaopensourcecdkprojectcontextaccounttypeset) | *No description.* |
+
+---
+
+##### `get` <a name="@almamedia-open-source/cdk-project-context.AccountType.get" id="almamediaopensourcecdkprojectcontextaccounttypeget"></a>
+
+```typescript
+import { AccountType } from '@almamedia-open-source/cdk-project-context'
+
+AccountType.get(scope: Construct)
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.AccountType.parameter.scope" id="almamediaopensourcecdkprojectcontextaccounttypeparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+##### `matchFromEnvironment` <a name="@almamedia-open-source/cdk-project-context.AccountType.matchFromEnvironment" id="almamediaopensourcecdkprojectcontextaccounttypematchfromenvironment"></a>
+
+```typescript
+import { AccountType } from '@almamedia-open-source/cdk-project-context'
+
+AccountType.matchFromEnvironment(scope: Construct, accounts: {[ key: string ]: Account}, environmentType: string)
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.AccountType.parameter.scope" id="almamediaopensourcecdkprojectcontextaccounttypeparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+###### `accounts`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.AccountType.parameter.accounts" id="almamediaopensourcecdkprojectcontextaccounttypeparameteraccounts"></a>
+
+- *Type:* {[ key: string ]: [`@almamedia-open-source/cdk-project-context.Account`](#@almamedia-open-source/cdk-project-context.Account)}
+
+---
+
+###### `environmentType`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.AccountType.parameter.environmentType" id="almamediaopensourcecdkprojectcontextaccounttypeparameterenvironmenttype"></a>
+
+- *Type:* `string`
+
+---
+
+##### `set` <a name="@almamedia-open-source/cdk-project-context.AccountType.set" id="almamediaopensourcecdkprojectcontextaccounttypeset"></a>
+
+```typescript
+import { AccountType } from '@almamedia-open-source/cdk-project-context'
+
+AccountType.set(scope: Construct, accountType: string)
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.AccountType.parameter.scope" id="almamediaopensourcecdkprojectcontextaccounttypeparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+###### `accountType`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.AccountType.parameter.accountType" id="almamediaopensourcecdkprojectcontextaccounttypeparameteraccounttype"></a>
+
+- *Type:* `string`
+
+---
+
+
+
+### EnvironmentType <a name="@almamedia-open-source/cdk-project-context.EnvironmentType" id="almamediaopensourcecdkprojectcontextenvironmenttype"></a>
+
+Internal class to handle set/get operations for Environment Type.
+
+#### Initializers <a name="@almamedia-open-source/cdk-project-context.EnvironmentType.Initializer" id="almamediaopensourcecdkprojectcontextenvironmenttypeinitializer"></a>
+
+```typescript
+import { EnvironmentType } from '@almamedia-open-source/cdk-project-context'
+
+new EnvironmentType()
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+
+---
+
+
+#### Static Functions <a name="Static Functions" id="static-functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`get`](#almamediaopensourcecdkprojectcontextenvironmenttypeget) | *No description.* |
+| [`set`](#almamediaopensourcecdkprojectcontextenvironmenttypeset) | *No description.* |
+
+---
+
+##### `get` <a name="@almamedia-open-source/cdk-project-context.EnvironmentType.get" id="almamediaopensourcecdkprojectcontextenvironmenttypeget"></a>
+
+```typescript
+import { EnvironmentType } from '@almamedia-open-source/cdk-project-context'
+
+EnvironmentType.get(scope: Construct, allowedEnvironments: string[])
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.EnvironmentType.parameter.scope" id="almamediaopensourcecdkprojectcontextenvironmenttypeparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+###### `allowedEnvironments`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.EnvironmentType.parameter.allowedEnvironments" id="almamediaopensourcecdkprojectcontextenvironmenttypeparameterallowedenvironments"></a>
+
+- *Type:* `string`[]
+
+---
+
+##### `set` <a name="@almamedia-open-source/cdk-project-context.EnvironmentType.set" id="almamediaopensourcecdkprojectcontextenvironmenttypeset"></a>
+
+```typescript
+import { EnvironmentType } from '@almamedia-open-source/cdk-project-context'
+
+EnvironmentType.set(scope: Construct, environmentType: string)
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.EnvironmentType.parameter.scope" id="almamediaopensourcecdkprojectcontextenvironmenttypeparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+###### `environmentType`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.EnvironmentType.parameter.environmentType" id="almamediaopensourcecdkprojectcontextenvironmenttypeparameterenvironmenttype"></a>
+
+- *Type:* `string`
+
+---
+
+
+
 ### ProjectContext <a name="@almamedia-open-source/cdk-project-context.ProjectContext" id="almamediaopensourcecdkprojectcontextprojectcontext"></a>
 
 #### Initializers <a name="@almamedia-open-source/cdk-project-context.ProjectContext.Initializer" id="almamediaopensourcecdkprojectcontextprojectcontextinitializer"></a>
@@ -428,14 +623,14 @@ new ProjectContext()
 | --- | --- |
 | [`getAccountConfig`](#almamediaopensourcecdkprojectcontextprojectcontextgetaccountconfig) | *No description.* |
 | [`getAccountId`](#almamediaopensourcecdkprojectcontextprojectcontextgetaccountid) | *No description.* |
-| [`getAccountType`](#almamediaopensourcecdkprojectcontextprojectcontextgetaccounttype) | *No description.* |
+| [`getAccountType`](#almamediaopensourcecdkprojectcontextprojectcontextgetaccounttype) | Returns the account type given in runtime/CLI context. |
+| [`getAllowedEnvironments`](#almamediaopensourcecdkprojectcontextprojectcontextgetallowedenvironments) | *No description.* |
 | [`getAuthorEmail`](#almamediaopensourcecdkprojectcontextprojectcontextgetauthoremail) | *No description.* |
 | [`getAuthorName`](#almamediaopensourcecdkprojectcontextprojectcontextgetauthorname) | *No description.* |
 | [`getAuthorOrganization`](#almamediaopensourcecdkprojectcontextprojectcontextgetauthororganization) | *No description.* |
 | [`getDefaultRegion`](#almamediaopensourcecdkprojectcontextprojectcontextgetdefaultregion) | *No description.* |
 | [`getEnvironment`](#almamediaopensourcecdkprojectcontextprojectcontextgetenvironment) | *No description.* |
 | [`getName`](#almamediaopensourcecdkprojectcontextprojectcontextgetname) | *No description.* |
-| [`tryGetEnvironment`](#almamediaopensourcecdkprojectcontextprojectcontexttrygetenvironment) | *No description.* |
 
 ---
 
@@ -479,6 +674,20 @@ ProjectContext.getAccountId(scope: Construct)
 import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
 
 ProjectContext.getAccountType(scope: Construct)
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+##### `getAllowedEnvironments` <a name="@almamedia-open-source/cdk-project-context.ProjectContext.getAllowedEnvironments" id="almamediaopensourcecdkprojectcontextprojectcontextgetallowedenvironments"></a>
+
+```typescript
+import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
+
+ProjectContext.getAllowedEnvironments(scope: Construct)
 ```
 
 ###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>
@@ -563,20 +772,6 @@ ProjectContext.getEnvironment(scope: Construct)
 import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
 
 ProjectContext.getName(scope: Construct)
-```
-
-###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>
-
-- *Type:* [`constructs.Construct`](#constructs.Construct)
-
----
-
-##### `tryGetEnvironment` <a name="@almamedia-open-source/cdk-project-context.ProjectContext.tryGetEnvironment" id="almamediaopensourcecdkprojectcontextprojectcontexttrygetenvironment"></a>
-
-```typescript
-import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
-
-ProjectContext.tryGetEnvironment(scope: Construct)
 ```
 
 ###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>

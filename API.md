@@ -33,7 +33,28 @@ new Project(props: ProjectProps)
 
 | **Name** | **Description** |
 | --- | --- |
+| [`getAccount`](#almamediaopensourcecdkprojectcontextprojectgetaccount) | Return account configuration. |
 | [`getConfiguration`](#almamediaopensourcecdkprojectcontextprojectgetconfiguration) | Return the project configuration as given in ProjectProps. |
+
+---
+
+##### `getAccount` <a name="@almamedia-open-source/cdk-project-context.Project.getAccount" id="almamediaopensourcecdkprojectcontextprojectgetaccount"></a>
+
+```typescript
+import { Project } from '@almamedia-open-source/cdk-project-context'
+
+Project.getAccount(scope: Construct, accountType: string)
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.Project.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+###### `accountType`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.Project.parameter.accountType" id="almamediaopensourcecdkprojectcontextprojectparameteraccounttype"></a>
+
+- *Type:* `string`
 
 ---
 

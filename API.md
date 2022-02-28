@@ -577,6 +577,7 @@ new EnvironmentType()
 | --- | --- |
 | [`get`](#almamediaopensourcecdkprojectcontextenvironmenttypeget) | *No description.* |
 | [`set`](#almamediaopensourcecdkprojectcontextenvironmenttypeset) | *No description.* |
+| [`tryGet`](#almamediaopensourcecdkprojectcontextenvironmenttypetryget) | *No description.* |
 
 ---
 
@@ -617,6 +618,20 @@ EnvironmentType.set(scope: Construct, environmentType: string)
 ###### `environmentType`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.EnvironmentType.parameter.environmentType" id="almamediaopensourcecdkprojectcontextenvironmenttypeparameterenvironmenttype"></a>
 
 - *Type:* `string`
+
+---
+
+##### `tryGet` <a name="@almamedia-open-source/cdk-project-context.EnvironmentType.tryGet" id="almamediaopensourcecdkprojectcontextenvironmenttypetryget"></a>
+
+```typescript
+import { EnvironmentType } from '@almamedia-open-source/cdk-project-context'
+
+EnvironmentType.tryGet(scope: Construct)
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.EnvironmentType.parameter.scope" id="almamediaopensourcecdkprojectcontextenvironmenttypeparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
@@ -697,6 +712,7 @@ new ProjectContext()
 | [`getDefaultRegion`](#almamediaopensourcecdkprojectcontextprojectcontextgetdefaultregion) | *No description.* |
 | [`getEnvironment`](#almamediaopensourcecdkprojectcontextprojectcontextgetenvironment) | *No description.* |
 | [`getName`](#almamediaopensourcecdkprojectcontextprojectcontextgetname) | *No description.* |
+| [`tryGetEnvironment`](#almamediaopensourcecdkprojectcontextprojectcontexttrygetenvironment) | *No description.* |
 
 ---
 
@@ -838,6 +854,20 @@ ProjectContext.getEnvironment(scope: Construct)
 import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
 
 ProjectContext.getName(scope: Construct)
+```
+
+###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+##### `tryGetEnvironment` <a name="@almamedia-open-source/cdk-project-context.ProjectContext.tryGetEnvironment" id="almamediaopensourcecdkprojectcontextprojectcontexttrygetenvironment"></a>
+
+```typescript
+import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
+
+ProjectContext.tryGetEnvironment(scope: Construct)
 ```
 
 ###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>

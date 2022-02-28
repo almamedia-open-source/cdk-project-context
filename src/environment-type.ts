@@ -14,16 +14,23 @@ export class EnvironmentType {
     scope.node.setContext('env', environmentType);
   }
 
-  static get(scope: Construct, allowedEnvironments: string[]): string {
+  static tryGet(scope: Construct): string | undefined {
     const environmentType =
       scope.node.tryGetContext('environment-type') ||
       scope.node.tryGetContext('environment') ||
       scope.node.tryGetContext('env');
 
+    return environmentType;
+  }
+
+  static get(scope: Construct, allowedEnvironments: string[]): string {
+    const environmentType = EnvironmentType.tryGet(scope);
+
     if (typeof environmentType !== 'string') {
       addError(scope,
         'Environment Type not specified! Provide environment type as context argument for CDK CLI, for example: --context environment-type=staging',
       );
+      return 'invalid';
     }
 
     const matches = allowedEnvironments.filter((e) =>
@@ -34,6 +41,7 @@ export class EnvironmentType {
       addError(scope,
         `Environment Type ${environmentType} not allowed in your configuration`,
       );
+      return 'invalid';
     }
 
     return environmentType;

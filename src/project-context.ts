@@ -52,6 +52,10 @@ export class ProjectContext {
     return account.environments || [];
   }
 
+  static tryGetEnvironment(scope: Construct): string | undefined {
+    return EnvironmentType.tryGet(scope);
+  }
+
   static getEnvironment(scope: Construct): string {
     const allowedEnvironments = ProjectContext.getAllowedEnvironments(scope);
     return EnvironmentType.get(scope, allowedEnvironments);

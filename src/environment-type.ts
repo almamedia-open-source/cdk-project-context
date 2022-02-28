@@ -30,7 +30,7 @@ export class EnvironmentType {
       addError(scope,
         'Environment Type not specified! Provide environment type as context argument for CDK CLI, for example: --context environment-type=staging',
       );
-      return 'invalid';
+      return '';
     }
 
     const matches = allowedEnvironments.filter((e) =>
@@ -41,7 +41,7 @@ export class EnvironmentType {
       addError(scope,
         `Environment Type ${environmentType} not allowed in your configuration`,
       );
-      return 'invalid';
+      return '';
     }
 
     return environmentType;

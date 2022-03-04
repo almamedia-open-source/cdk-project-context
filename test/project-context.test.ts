@@ -29,33 +29,35 @@ const config = {
 
 describe('Project Context', () => {
 
-  const accountType = 'dev';
+  describe('Account', () => {
 
-  test('Account Type', () => {
-    const project = new Project({ ...config, context: { account: accountType } });
-    const stack = new Stack(project, 'MyStack');
-    expect(stack.node.tryGetContext('account')).toBe(accountType);
-    const type = ProjectContext.getAccountType(stack);
-    expect(type).toBe(accountType);
-  });
+    const accountType = 'dev';
 
-  test('Account ID', () => {
-    const project = new Project({ ...config, context: { account: accountType } });
-    const stack = new Stack(project, 'MyStack');
-    expect(stack.node.tryGetContext('account')).toBe(accountType);
-    const id = ProjectContext.getAccountId(stack);
-    expect(id).toBe(config.accounts[accountType].id);
-  });
+    test('Account Type', () => {
+      const project = new Project({ ...config, context: { account: accountType } });
+      const stack = new Stack(project, 'MyStack');
+      expect(stack.node.tryGetContext('account')).toBe(accountType);
+      const type = ProjectContext.getAccountType(stack);
+      expect(type).toBe(accountType);
+    });
 
-  test('Account Config', () => {
-    const project = new Project({ ...config, context: { account: accountType } });
-    const stack = new Stack(project, 'MyStack');
-    expect(stack.node.tryGetContext('account')).toBe(accountType);
-    const baseDomain = ProjectContext.getAccountConfig(stack, 'baseDomain');
-    expect(baseDomain).toBe(config.accounts[accountType].config.baseDomain);
-  });
+    test('Account ID', () => {
+      const project = new Project({ ...config, context: { account: accountType } });
+      const stack = new Stack(project, 'MyStack');
+      expect(stack.node.tryGetContext('account')).toBe(accountType);
+      const id = ProjectContext.getAccountId(stack);
+      expect(id).toBe(config.accounts[accountType].id);
+    });
 
-  /*
+    test('Account Config', () => {
+      const project = new Project({ ...config, context: { account: accountType } });
+      const stack = new Stack(project, 'MyStack');
+      expect(stack.node.tryGetContext('account')).toBe(accountType);
+      const baseDomain = ProjectContext.getAccountConfig(stack, 'baseDomain');
+      expect(baseDomain).toBe(config.accounts[accountType].config.baseDomain);
+    });
+
+    /*
   test('foo', () => {
     const vastaus = ProjectContext.foo(config.accounts, 'development');
     expect(vastaus).toBe('dev');
@@ -73,6 +75,22 @@ describe('Project Context', () => {
 
   // TODO add tests for all the methods
   //test('', () => {})
+  });
+
+  describe('Environment', () => {
+
+    const accountType = 'dev';
+    const environmentType = 'development';
+
+    test('Account Type', () => {
+      const project = new Project({ ...config, context: { account: accountType, environment: environmentType } });
+      const stack = new Stack(project, 'MyStack');
+      expect(stack.node.tryGetContext('account')).toBe(accountType);
+      expect(stack.node.tryGetContext('environment')).toBe(environmentType);
+
+      expect(ProjectContext.getEnvironment(stack)).toBe(environmentType);
+    });
+  });
 
 });
 

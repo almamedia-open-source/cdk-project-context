@@ -15,12 +15,22 @@ const config = {
       id: '111111111111',
       config: {
         baseDomain: 'example.net',
+        some: {
+          deep: {
+            object: 'foo',
+          },
+        },
       },
     },
     prod: {
       id: '222222222222',
       config: {
         baseDomain: 'example.com',
+        some: {
+          deep: {
+            object: 'foo',
+          },
+        },
       },
     },
   },

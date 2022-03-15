@@ -721,7 +721,7 @@ new ProjectContext()
 ```typescript
 import { ProjectContext } from '@almamedia-open-source/cdk-project-context'
 
-ProjectContext.getAccountConfig(scope: Construct, key: string)
+ProjectContext.getAccountConfig(scope: Construct, key: string, defaultValue?: any)
 ```
 
 ###### `scope`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.scope" id="almamediaopensourcecdkprojectcontextprojectcontextparameterscope"></a>
@@ -733,6 +733,12 @@ ProjectContext.getAccountConfig(scope: Construct, key: string)
 ###### `key`<sup>Required</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.key" id="almamediaopensourcecdkprojectcontextprojectcontextparameterkey"></a>
 
 - *Type:* `string`
+
+---
+
+###### `defaultValue`<sup>Optional</sup> <a name="@almamedia-open-source/cdk-project-context.ProjectContext.parameter.defaultValue" id="almamediaopensourcecdkprojectcontextprojectcontextparameterdefaultvalue"></a>
+
+- *Type:* `any`
 
 ---
 

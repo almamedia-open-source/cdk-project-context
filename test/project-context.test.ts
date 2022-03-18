@@ -15,6 +15,11 @@ const config = {
       environments: ['development', 'feature/.*', 'staging'],
       config: {
         baseDomain: 'example.net',
+        some: {
+          deep: {
+            object: 'foo',
+          },
+        },
       },
     },
     prod: {
@@ -22,6 +27,11 @@ const config = {
       environments: ['production'],
       config: {
         baseDomain: 'example.com',
+        some: {
+          deep: {
+            object: 'foo',
+          },
+        },
       },
     },
   },
@@ -55,6 +65,10 @@ describe('Project Context', () => {
       expect(stack.node.tryGetContext('account')).toBe(accountType);
       const baseDomain = ProjectContext.getAccountConfig(stack, 'baseDomain');
       expect(baseDomain).toBe(config.accounts[accountType].config.baseDomain);
+      const someDeepObject = ProjectContext.getAccountConfig(stack, 'some.deep.object');
+      expect(someDeepObject).toBe(config.accounts[accountType].config.some.deep.object);
+      const missingConfig = ProjectContext.getAccountConfig(stack, 'missing.config');
+      expect(missingConfig).toBeUndefined();
     });
 
     /*

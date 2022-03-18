@@ -15,6 +15,11 @@ const config = {
       environments: ['development', 'feature/.*', 'staging'],
       config: {
         baseDomain: 'example.net',
+        some: {
+          deep: {
+            object: 'foo',
+          },
+        },
       },
     },
     prod: {
@@ -22,6 +27,11 @@ const config = {
       environments: ['production'],
       config: {
         baseDomain: 'example.com',
+        some: {
+          deep: {
+            object: 'foo',
+          },
+        },
       },
     },
   },

@@ -1,6 +1,8 @@
 import { Construct } from 'constructs';
+import { get } from 'lodash';
 import { AccountType } from './account-type';
 import { EnvironmentType } from './environment-type';
+import { addError } from './error';
 import { Account } from './interfaces';
 import { Project } from './project';
 
@@ -14,12 +16,19 @@ export class ProjectContext {
 
   static getAccountId(scope: Construct): string {
     const account = ProjectContext.getProjectAccountConfiguration(scope);
+    if (!account.id) {
+      addError(scope, `Account ${this.getName(scope)} does not have an ID`);
+    }
     return account.id;
   }
 
-  static getAccountConfig(scope: Construct, key: string): any {
+  static getAccountConfig(scope: Construct, key: string, defaultValue?: any): any {
     const account = ProjectContext.getProjectAccountConfiguration(scope);
-    return account.config?.[key];
+    const value = get(account.config, key, defaultValue);
+    if (value === undefined || value === '') {
+      addError(scope, `Account ${this.getName(scope)} does not have a config with key ${key}`);
+    }
+    return value;
   }
 
   static getDefaultRegion(scope: Construct): string {

@@ -67,6 +67,8 @@ describe('Project Context', () => {
       expect(baseDomain).toBe(config.accounts[accountType].config.baseDomain);
       const someDeepObject = ProjectContext.getAccountConfig(stack, 'some.deep.object');
       expect(someDeepObject).toBe(config.accounts[accountType].config.some.deep.object);
+      const missingConfig = ProjectContext.getAccountConfig(stack, 'missing.config');
+      expect(missingConfig).toBeUndefined();
     });
 
     /*

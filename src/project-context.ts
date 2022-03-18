@@ -2,6 +2,7 @@ import { Construct } from 'constructs';
 import { get } from 'lodash';
 import { AccountType } from './account-type';
 import { EnvironmentType } from './environment-type';
+import { addError } from './error';
 import { Account } from './interfaces';
 import { Project } from './project';
 
@@ -16,7 +17,7 @@ export class ProjectContext {
   static getAccountId(scope: Construct): string {
     const account = ProjectContext.getProjectAccountConfiguration(scope);
     if (!account.id) {
-      throw new Error(`Account ${this.getName(scope)} does not have an ID`);
+      addError(scope, `Account ${this.getName(scope)} does not have an ID`);
     }
     return account.id;
   }
@@ -25,7 +26,7 @@ export class ProjectContext {
     const account = ProjectContext.getProjectAccountConfiguration(scope);
     const value = get(account.config, key, defaultValue);
     if (value === undefined || value === '') {
-      throw new Error(`Account ${this.getName(scope)} does not have a config with key ${key}`);
+      addError(scope, `Account ${this.getName(scope)} does not have a config with key ${key}`);
     }
     return value;
   }
